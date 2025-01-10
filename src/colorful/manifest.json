@@ -1,0 +1,21 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "colorful",
+  "version": "1.0.0",
+  "apiLevel": 2,
+  "meta": {
+    "name": "Colorful",
+    "tagline": "Add color to an otherwise stale client!",
+    "description": "Allows you to recolor your client, like the old client theme experiment. Port of ClientTheme from Vencord.",
+    "authors": ["nakoyasha"],
+    "source": "https://github.com/nakoyasha/moonlight-extensions"
+  },
+  "settings": {
+    "color": {
+      "displayName": "Color",
+      "description": "Color your Discord client theme will be based around. Light mode isn't supported",
+      "type": "custom",
+      "default": []
+    }
+  }
+}
