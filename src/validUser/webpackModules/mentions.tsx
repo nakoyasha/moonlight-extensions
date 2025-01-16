@@ -1,8 +1,6 @@
 //ts-expect-error
-import React, { type ComponentType, type ReactNode } from "@moonlight-mod/wp/react";
+import React from "@moonlight-mod/wp/react";
 import { useState } from "@moonlight-mod/wp/react";
-//@ts-expect-error
-import { UserMention } from "@moonlight-mod/wp/discord/components/common/index";
 import { UserStore, UserProfileStore } from "@moonlight-mod/wp/common_stores";
 import Dispatcher from "@moonlight-mod/wp/discord/Dispatcher";
 import spacepack from "@moonlight-mod/wp/spacepack_spacepack";
@@ -24,14 +22,14 @@ interface MentionProps {
     channelId?: string;
     content: any;
   };
-  parse: (content: any, props: MentionProps["props"]) => ReactNode;
+  parse: (content: any, props: MentionProps["props"]) => any;
   props: {
     key: string;
     formatInline: boolean;
     noStyleAndInteraction: boolean;
   };
-  RoleMention: ComponentType<any>;
-  UserMention: ComponentType<any>;
+  RoleMention: any;
+  UserMention: any;
 }
 
 const badges: Record<string, ProfileBadge> = {
@@ -142,8 +140,7 @@ async function getUser(id: string) {
 
   userObj = UserStore.getUser(id);
   const fakeBadges: ProfileBadge[] = Object.entries(UserFlags)
-    //@ts-expect-error
-    .filter(([_, flag]) => !isNaN(flag) && userObj.hasFlag(flag))
+    .filter(([_, flag]) => !isNaN(flag as any) && userObj.hasFlag(flag))
     .map(([key]) => badges[key.toLowerCase()])
     .filter(isNonNullish);
   if (user.premium_type || (!user.bot && (user.banner || user.avatar?.startsWith?.("a_"))))
@@ -217,7 +214,6 @@ export function MentionWrapper({ data, UserMention, RoleMention, parse, props }:
 }
 
 export default function renderMention(RoleMention: any, UserMention: any, data: any, parse: any, props: any) {
-  console.log(data, UserMention, RoleMention);
   return (
     <MentionWrapper
       key={"mention" + data.userId}
