@@ -1,0 +1,14 @@
+{
+  "$schema": "https://moonlight-mod.github.io/manifest.schema.json",
+  "id": "validuser",
+  "version": "1.0.0",
+  "apiLevel": 2,
+  "meta": {
+    "name": "ValidUser",
+    "tagline": "@unknown-user no more",
+    "description": "Automatically fetches and caches users.",
+    "authors": ["nakoyasha"],
+    "source": "https://github.com/nakoyasha/moonlight-extensions"
+  },
+  "settings": {}
+}
